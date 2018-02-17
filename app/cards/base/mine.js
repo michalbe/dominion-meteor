@@ -28,7 +28,7 @@ Mine = class Mine extends Card {
       let turn_event_processor = new TurnEventProcessor(game, player_cards, turn_event_id)
       turn_event_processor.process(Mine.trash_card)
     } else {
-      game.log.push(`&nbsp;&nbsp;but there are no treasures in hand`)
+      game.log.push(`&nbsp;&nbsp;but there are no treasures in hand`);
     }
   }
 
