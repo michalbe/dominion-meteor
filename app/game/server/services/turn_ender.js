@@ -17,7 +17,7 @@ TurnEnder = class TurnEnder {
     this.end_turn_events()
     this.track_gained_cards()
     this.game.log.push(`<strong>${this.game.turn.player.username}</strong> ends their turn`)
-    if (true) { //this.game_over()) {
+    if (this.game_over()) {
       this.end_game()
     } else {
       GameModel.update(this.game._id, this.game)

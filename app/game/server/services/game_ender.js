@@ -67,7 +67,7 @@ GameEnder = class GameEnder {
 		        icon_emoji: ':shield:'
 		    };
 
-		    bot.postMessageToChannel('test', startingg + ' Udzial wzieli: ' + players + '. Wygral: *' + winners + '*. ' + endingg, params, function (result) {
+		    bot.postMessageToChannel('gramy-w-gry', startingg + ' Udzial wzieli: ' + players + '. Wygral: *' + winners + '*. ' + endingg, params, function (result) {
 		 			bot.logout();
 		    });
 

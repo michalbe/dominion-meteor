@@ -4,7 +4,8 @@
   "description": "A website implementation of the board game Dominion, based off the former site dominion.isotropic.org.",
   "main": "mup.js",
   "dependencies": {
-    "bcrypt": "^0.8.7"
+    "bcrypt": "^0.8.7",
+    "simple-slack-bot": "0.0.3"
   },
   "devDependencies": {},
   "scripts": {
