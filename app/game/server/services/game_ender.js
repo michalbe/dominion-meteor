@@ -1,3 +1,36 @@
+var SlackBot = require('simple-slack-bot');
+var starting_sentence = [
+	'Kolejny pojedynek zakonczony.',
+	'Kolejny pojedynek zakonczony.',
+	'Kolejny pojedynek zakonczony.',
+	'Mecz dobiegl konca.',
+	'Co to byl za mecz!',
+	'Kolejne niesamowite spotkanie za nami.',
+	'Ci co nie widzieli niech zaluja. Ci co widzieli, nigdy nie zapomna!',
+	'Za nami kolejne spotkanie ekstraklasy. Spotkanie *na szczycie*, chcialoby sie rzec.',
+	'Uhh, uhhh, coz to byly za emocje! Kolejny mecz za nami.',
+	'Spotkanie nudne jak flaki z olejem.'
+];
+
+var ending_sentences = [
+	'* P O T E Z N I E!*',
+	'To byl *POGROM*!',
+	'To byl *POGROM*!',
+	'Nie najgorzej...',
+	'Nie najgorzej...',
+	'Nie najgorzej...',
+	'Super!',
+	'O tej porazce beda uczyc sie kolejne pokolenia.',
+	'Niesamowite!',
+	'Tak srednio bym powiedzial...',
+	'Jakbym nie widzial, to bym nie uwierzyl.',
+	'Bog mi swiadkiem - tak bylo!',
+	'W ptasiej kulturze, nazywamy to kutasim ruchem.',
+	'Slepej kurze tez sie ziarno trafia...',
+	'To bylo *upokorzenie* rywala!',
+	'Ale mu dojebal!!!'
+];
+
 GameEnder = class GameEnder {
 
   constructor(game) {
@@ -10,6 +43,36 @@ GameEnder = class GameEnder {
     this.update_players()
     this.log_game()
     this.update_player_rankings()
+		let players = this.game.players.map((player) => {
+			let points = this.game.scores.find((score) => {
+				return score.username === player.username;
+			}).points;
+			return player.username + ' *(' + points + ')*';
+		}).join(', ');
+
+		let winners = this.winners();
+		let startingg = starting_sentence[~~(Math.random()*starting_sentence.length)];
+		let endingg = ending_sentences[~~(Math.random()*ending_sentences.length)];
+
+		var bot = new SlackBot(
+		    {
+		        cached: true,
+		        token: 'xoxb-323136184257-SR3hfVTpFa96gjEkdVbxOiKM',
+		        name: 'szpakowski-dominion'
+		    }
+		);
+
+		bot.on('slack.login', function() {
+		    var params = {
+		        icon_emoji: ':shield:'
+		    };
+
+		    bot.postMessageToChannel('test', startingg + ' Udzial wzieli: ' + players + '. Wygral: *' + winners + '*. ' + endingg, params, function (result) {
+		 			bot.logout();
+		    });
+
+		});
+		bot.login();
   }
 
   update_game() {
