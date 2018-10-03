@@ -606,7 +606,7 @@ GameCreator = class GameCreator {
       cards = cards.concat(this.black_market_deck)
     }
     return _.some(cards, function(card) {
-      return _.includes(_.words(card.top_card.types), 'fate') && card.name != 'Druid'
+      return _.includes(_.words(card.top_card ? card.top_card.types : card.types), 'fate') && card.name != 'Druid'
     })
   }
 
@@ -615,7 +615,7 @@ GameCreator = class GameCreator {
       cards = cards.concat(this.black_market_deck)
     }
     return _.some(cards, function(card) {
-      return _.includes(_.words(card.top_card.types), 'doom')
+      return _.includes(_.words(card.top_card ? card.top_card.types : card.types), 'doom')
     })
   }
 
