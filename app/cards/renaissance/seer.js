@@ -42,7 +42,7 @@ Seer = class Seer extends Card {
                 return !CardCostComparer.coin_between(game, card, 2, 4)
             })
 
-            player_cards.deck.splice(0, _.size(player_cards.revealed))
+            player_cards.deck.splice(0, 0, _.size(player_cards.revealed))
             player_cards.hand = player_cards.hand.concat(revealed_costing_2_to_4)
 
             game.log.push(`&nbsp;&nbsp;<strong>${player_cards.username}</strong> puts ${_.size(revealed_costing_2_to_4)} cards in hand`)
