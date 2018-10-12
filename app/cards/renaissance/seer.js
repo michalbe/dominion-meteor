@@ -12,6 +12,14 @@ Seer = class Seer extends Card {
         let card_drawer = new CardDrawer(game, player_cards)
         card_drawer.draw(1)
 
+        let all = {};
+        player_cards.in_play.concat(player_cards.discard).concat(player_cards.deck).concat(player_cards.hand).forEach((card) => {
+            all[card.name] = all[card.name] || 0;
+            all[card.name]++;
+        })
+
+        console.log('1', all)
+
         game.turn.actions += 1
         game.log.push(`&nbsp;&nbsp;<strong>${player_cards.username}</strong> gets +1 action`)
 
@@ -33,7 +41,6 @@ Seer = class Seer extends Card {
 
             game.log.push(`&nbsp;&nbsp;<strong>${player_cards.username}</strong> looks at the top ${_.size(player_cards.revealed)} cards of their deck`)
 
-
             let revealed_costing_2_to_4 = _.filter(player_cards.revealed, function (card) {
                 return CardCostComparer.coin_between(game, card, 2, 4)
             })
@@ -42,7 +49,6 @@ Seer = class Seer extends Card {
                 return !CardCostComparer.coin_between(game, card, 2, 4)
             })
 
-            player_cards.deck.splice(0, 0, _.size(player_cards.revealed))
             player_cards.hand = player_cards.hand.concat(revealed_costing_2_to_4)
 
             game.log.push(`&nbsp;&nbsp;<strong>${player_cards.username}</strong> puts ${_.size(revealed_costing_2_to_4)} cards in hand`)
@@ -60,6 +66,15 @@ Seer = class Seer extends Card {
                 turn_event_processor.process(Seer.replace_cards)
             }
         }
+
+        all = {};
+        player_cards.in_play.concat(player_cards.discard).concat(player_cards.deck).concat(player_cards.hand).forEach((card) => {
+            all[card.name] = all[card.name] || 0;
+            all[card.name]++;
+        })
+
+        console.log('2', all)
+
     }
 
     static replace_cards(game, player_cards, ordered_card_names) {
@@ -68,10 +83,22 @@ Seer = class Seer extends Card {
                 return card.name === card_name
             })
             let revealed_card = player_cards.cards_to_return.splice(revealed_card_index, 1)[0]
+            // console.log('returned', revealed_card);
             player_cards.deck.unshift(revealed_card)
         })
+
+        console.log('deck 3', player_cards.deck.map(card => card.name))
+
         game.log.push(`&nbsp;&nbsp;<strong>${player_cards.username}</strong> places the remaining cards back on their deck`)
         player_cards.cards_to_return = []
+
+        all = {};
+        player_cards.in_play.concat(player_cards.discard).concat(player_cards.deck).concat(player_cards.hand).forEach((card) => {
+            all[card.name] = all[card.name] || 0;
+            all[card.name]++;
+        })
+
+        console.log('3', all)
     }
 
 }
