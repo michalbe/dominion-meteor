@@ -256,11 +256,12 @@ CardList = class CardList {
       'ActingTroupe',
       'Treasurer',
       'Recruiter',
-      'Sculptor',
-      'SilkMerchant',
-      'Ducat',
-      'Villain',
-      'Swashbuckler'
+      // 'Sculptor',
+      // 'SilkMerchant',
+      // 'Ducat',
+      // 'Villain',
+      // 'Swashbuckler',
+      'Spices'
     ]
   }
 
