@@ -10,7 +10,7 @@ CardList = class CardList {
     let game_cards = _.sampleSize(this.cards, 10)
 
     let events_and_landmarks = _.filter(game_cards, (card_name) => {
-      return _.includes(CardList.event_cards(this.edition).concat(CardList.landmark_cards(this.edition)), _.titleize(card_name))
+      return _.includes(CardList.event_cards(this.edition).concat(CardList.landmark_cards(this.edition)).concat(CardList.project_cards(this.edition)), _.titleize(card_name))
     })
     let event_and_landmark_count = _.size(events_and_landmarks)
     if (event_and_landmark_count > 2) {
@@ -75,12 +75,16 @@ CardList = class CardList {
     return ['empires']
   }
 
+  static project_sets(edition = '') {
+    return ['renaissance']
+  }
+
   static pull_one(exclusions = [], edition) {
     return ClassCreator.create(_.sample(CardList.full_list(exclusions, edition))).to_h()
   }
 
   static full_list(exclusions = [], edition) {
-    return CardList.kingdom_cards(exclusions, edition).concat(CardList.event_cards(exclusions, edition)).concat(CardList.landmark_cards(exclusions, edition))
+    return CardList.kingdom_cards(exclusions, edition).concat(CardList.event_cards(exclusions, edition)).concat(CardList.landmark_cards(exclusions, edition)).concat(CardList.project_cards())
   }
 
   static kingdom_cards(exclusions = [], edition) {
@@ -122,6 +126,16 @@ CardList = class CardList {
     }, [])
   }
 
+  static project_cards(exclusions = [], edition) {
+    exclusions_for_edition = CardList.exclusions_for_edition(exclusions, edition)
+    return _.reduce(CardList.project_sets(edition), function(card_list, set) {
+      if (!_.includes(exclusions_for_edition, set)) {
+        card_list = card_list.concat(CardList[`${set}_projects`]())
+      }
+      return card_list
+    }, [])
+  }
+
   static exclusions_for_edition(exclusions, edition) {
     return _.map(exclusions, (exclusion) => {
       if (_.includes(['base', 'intrigue'], exclusion)) {
@@ -130,6 +144,17 @@ CardList = class CardList {
         return exclusion
       }
     })
+  }
+
+  static renaissance_projects() {
+    return [
+      'Exploration',
+      'Pageant',
+      'Cathedral',
+      'StarChart',
+      'CityGate',
+      'Sewers'
+    ]
   }
 
   static empires_landmarks() {

@@ -14,8 +14,13 @@ GameCreator = class GameCreator {
     })
     this.landmarks = this.landmark_cards(landmarks)
 
+    let projects = _.filter(cards, function (card) {
+      return _.includes(CardList.project_cards(), _.titleize(card.name))
+    })
+    this.projects = this.project_cards(projects)
+
     this.cards = _.reject(cards, function(card) {
-      return _.includes(CardList.event_cards().concat(CardList.landmark_cards()), _.titleize(card.name))
+      return _.includes(CardList.event_cards().concat(CardList.landmark_cards()).concat(CardList.project_cards()), _.titleize(card.name))
     })
     this.colors = ['red', 'blue', 'yellow', 'green']
   }
@@ -37,6 +42,7 @@ GameCreator = class GameCreator {
       cards: cards,
       events: this.events,
       landmarks: this.landmarks,
+      projects: this.projects,
       duchess: this.game_has_card(cards, 'Duchess'),
       prizes: this.prizes(cards),
       trash: []
@@ -198,6 +204,12 @@ GameCreator = class GameCreator {
   event_cards(events) {
     return _.sortBy(events, function(event) {
       return -event.coin_cost
+    })
+  }
+
+  project_cards(projects) {
+    return _.sortBy(projects, function (project) {
+      return -project.coin_cost
     })
   }
 
@@ -584,6 +596,15 @@ GameCreator = class GameCreator {
     ]
     return _.map(boons, function(boon) {
       return boon.to_h()
+    })
+  }
+
+  projects() {
+    let projects = [
+      new Cathedral()
+    ]
+    return _.map(projects, function (project) {
+      return project.to_h()
     })
   }
 

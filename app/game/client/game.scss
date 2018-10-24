@@ -54,6 +54,8 @@ body {
 .event-details,
 .landmark-thumbnail,
 .landmark-details,
+.project-thumbnail,
+.project-details,
 .boon-thumbnail,
 .artifact-thumbnail,
 .artifact-details,
@@ -84,6 +86,7 @@ body {
 
 .event-container,
 .landmark-container,
+.project-container,
 .boon-container,
 .artifact-container {
   height: $event_height;
@@ -91,6 +94,7 @@ body {
 }
 
 .landmark-name,
+.project-name,
 .event-name,
 .boon-name,
 .artifact-name {
@@ -102,12 +106,14 @@ body {
 }
 
 .landmark-name span,
+.project-name span,
 .event-name span,
 .boon-name span,
 .artifact-name span {
   line-height: $event_height;
 }
 
+.project-details,
 .landmark-details,
 .event-details,
 .boon-details,
