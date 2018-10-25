@@ -15,7 +15,7 @@ CardList = class CardList {
     let event_and_landmark_count = _.size(events_and_landmarks)
     if (event_and_landmark_count > 2) {
       game_cards = _.reject(game_cards, (card_name) => {
-        return _.includes(CardList.event_cards(this.edition).concat(CardList.landmark_cards(this.edition)), _.titleize(card_name))
+        return _.includes(CardList.event_cards(this.edition).concat(CardList.landmark_cards(this.edition)).concat(CardList.project_cards(this.edition)), _.titleize(card_name))
       })
       game_cards.push(events_and_landmarks[0])
       game_cards.push(events_and_landmarks[1])
@@ -48,7 +48,7 @@ CardList = class CardList {
         invalid_replacement = true
         let replacement_card_name = CardList.pull_one(this.exclusions, this.edition).name
         if (!_.includes(game_cards, _.titleize(replacement_card_name))) {
-          if (_.includes(CardList.event_cards(this.edition).concat(CardList.landmark_cards(this.edition)), _.titleize(replacement_card_name))) {
+          if (_.includes(CardList.event_cards(this.edition).concat(CardList.landmark_cards(this.edition)).concat(CardList.project_cards(this.edition)), _.titleize(replacement_card_name))) {
             if (event_count < 2) {
               game_cards.push(replacement_card_name)
               event_count += 1
