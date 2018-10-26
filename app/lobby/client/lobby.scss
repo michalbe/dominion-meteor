@@ -10,6 +10,7 @@ $night: grey;
 $shelter: salmon;
 $state: peachpuff;
 $artifact: firebrick;
+$project: palevioletred;
 $ruins: burlywood;
 $reserve: #cdb332;
 $busy: grey;
@@ -123,6 +124,10 @@ hr {
 
 .artifact {
   background-color: $artifact;
+}
+
+.project {
+  background-color: $project;
 }
 
 .action.victory {

@@ -24,7 +24,8 @@ Project = class Project {
     return {
       name: this.name(),
       image: this.image(),
-      types: 'state'
+      types: 'project',
+      coin_cost: this.coin_cost(),
     }
   }
 }
