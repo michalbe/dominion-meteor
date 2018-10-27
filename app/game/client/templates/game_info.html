@@ -131,6 +131,13 @@
       {{/each}}
       <br />
     {{/if}}
+    {{#if projects}}
+      Projects:
+      {{#each projects}}
+        <span class="{{types}}">{{name}}</span>
+      {{/each}}
+      <br />
+    {{/if}}
     <br />
   {{/each}}
 </template>

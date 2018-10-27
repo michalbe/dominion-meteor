@@ -8,6 +8,11 @@ Project = class Project {
     return _.snakeCase(this.constructor.name)
   }
 
+  cubes() {
+    console.log('cubes', this._cubes)
+    return this._cubes;
+  }
+
   type_class() {
     return 'project'
   }
@@ -20,12 +25,16 @@ Project = class Project {
     return false
   }
 
+  buy(game, player_cards) {
+    player_cards.projects.push(this.to_h())
+  }
+
   to_h() {
     return {
       name: this.name(),
       image: this.image(),
       types: 'project',
-      coin_cost: this.coin_cost(),
+      coin_cost: this.coin_cost()
     }
   }
 }
