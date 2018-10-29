@@ -13,7 +13,7 @@ StartTurnEventProcessor = class StartTurnEventProcessor {
   }
 
   static project_events() {
-    return ['Cathedral']
+    return ['Cathedral', 'City Gate']
   }
 
   constructor(game, player_cards) {
