@@ -4,6 +4,10 @@ EndBuyEventProcessor = class EndBuyEventProcessor {
     return ['Wine Merchant']
   }
 
+  static project_events() {
+    return ['Exploration']
+  }
+
   constructor(game, player_cards) {
     this.game = game
     this.player_cards = player_cards
@@ -21,7 +25,16 @@ EndBuyEventProcessor = class EndBuyEventProcessor {
       }
     })
 
-    this.end_buy_events = reserve_events
+    let project_events = _.filter(this.player_cards.projects, (project) => {
+      if (_.includes(EndBuyEventProcessor.project_events(), project.name)) {
+        if (project.name === 'Exploration') {
+          return _.size(this.game.turn.bought_cards) === 0
+        } else {
+          return true
+        }
+      }
+    });
+    this.end_buy_events = reserve_events.concat(project_events)
   }
 
   process() {
