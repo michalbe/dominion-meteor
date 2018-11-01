@@ -151,7 +151,8 @@ CardList = class CardList {
       // 'Exploration',
       'Fair',
       // 'Pageant',
-      'Cathedral',
+      // 'Cathedral',
+      'Silos',
       // 'StarChart',
       // 'CityGate',
       // 'Sewers'
