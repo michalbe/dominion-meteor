@@ -149,7 +149,8 @@ CardList = class CardList {
   static renaissance_projects() {
     return [
       // 'Exploration',
-      'Fair',
+      // 'Fair',
+      'Piazza',
       // 'Pageant',
       // 'Cathedral',
       'Silos',
