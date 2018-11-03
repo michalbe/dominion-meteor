@@ -1,6 +1,6 @@
 Piazza = class Piazza extends Project {
     coin_cost() {
-        return 2
+        return 5
     }
 
     start_turn_event(game, player_cards) {
