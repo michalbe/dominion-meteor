@@ -148,17 +148,17 @@ CardList = class CardList {
 
   static renaissance_projects() {
     return [
-      // 'Exploration',
-      // 'Fair',
+      'Exploration',
+      'Fair',
       'Piazza',
-      // 'Barracks',
-      // 'CropRotation',
+      'Barracks',
+      'CropRotation',
       'Canal',
-      // 'Pageant',
-      // 'Cathedral',
-      // 'Silos',
+      'Pageant',
+      'Cathedral',
+      'Silos',
       // 'StarChart',
-      // 'CityGate',
+      'CityGate',
       // 'Sewers'
     ]
   }
@@ -285,17 +285,17 @@ CardList = class CardList {
       'Seer',
       'Priest',
       'ActingTroupe',
-      // 'Treasurer',
+      'Treasurer',
       'Border Guard',
-      // 'Recruiter',
-      // 'OldWitch',
+      'Recruiter',
+      'OldWitch',
       'Lackeys',
-      // 'Inventor',
-      // 'Sculptor',
-      // 'SilkMerchant',
-      // 'Ducat',
-      // 'Villain',
-      // 'Swashbuckler',
+      'Inventor',
+      'Sculptor',
+      'SilkMerchant',
+      'Ducat',
+      'Villain',
+      'Swashbuckler',
       'Spices'
     ]
   }
