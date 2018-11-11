@@ -258,6 +258,7 @@ CardList = class CardList {
       // 'Recruiter',
       // 'OldWitch',
       'Lackeys',
+      'Inventor',
       // 'Sculptor',
       // 'SilkMerchant',
       // 'Ducat',
