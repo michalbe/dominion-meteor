@@ -1,6 +1,6 @@
 CropRotation = class CropRotation extends Project {
     coin_cost() {
-        return 1
+        return 6
     }
 
     start_turn_event(game, player_cards) {
